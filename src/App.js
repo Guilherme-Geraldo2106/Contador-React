@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  let[count, setcount] = useState(0);
+
+    return (
+      <div className="App">
+          <div id='conjunto'>
+              <h1>Contador</h1>
+              {
+                (count<0)?
+                  <p style={{color:'red'}}>{count}</p>:
+                (count>0)?
+                  <p style={{color:'green'}}>{count}</p>: // Renderização condicional
+                  <p style={{color:'black'}}>{count}</p>
+              }
+              <div id="input">
+              <input type="button" className='input' value="Diminuir" onClick={() => setcount(count - 1)}></input>
+              <input type="button" className='input' value="Zerar" onClick={() => setcount(count = 0)}></input>
+              <input type="button" className='input' value="Aumentar" onClick={() => setcount(count + 1)}></input>
+              </div>
+          </div>
+      </div> 
+    );
 }
 
 export default App;
+
+
